@@ -1,0 +1,28 @@
+// Author: Rudhra Deep Biswas | github: rudeUltra
+// File: grid.proto
+syntax = "proto3";
+
+package semanticgrid;
+
+import "google/protobuf/empty.proto";
+
+message PutRequest {
+    string key = 1;
+    repeated float vector_data = 2;
+}
+
+message SearchRequest {
+    repeated float query_vector = 1;
+    int32 top_k = 2;
+}
+
+message SearchResponse {
+    string key = 1;
+    float score = 2;
+}
+
+service SemanticCache {
+    rpc Put(PutRequest) returns (google.protobuf.Empty);
+    rpc SemanticSearch(SearchRequest) returns (stream SearchResponse);
+    rpc Subscribe(google.protobuf.Empty) returns (stream PutRequest);
+}
