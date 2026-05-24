@@ -1,4 +1,4 @@
-# Semantic Memory Grid
+# Semantic AI Memory Grid
 
 A high-performance, distributed vector database and semantic cache built from scratch in C++17. 
 
